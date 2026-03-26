@@ -16,8 +16,9 @@ html{
 
 :root{
 
-    --bg-color: #000000;
-    --bg-button-color: #1a1a1a;
+    --bg-body-color: #000000;
+    --bg-color: #1a1a1a;
+    --bg-btn-color: #333333;
     --bg-task-color: #2a2a2a;
     --primary-text-color: #f4f4f4;
     --delete-color: #ff4d4d;
@@ -42,7 +43,7 @@ html{
 }
 
 body{
-    background-color: var(--bg-color);
+    background-color: var(--bg-body-color);
     color: var(--primary-text-color)
 }
 
@@ -60,7 +61,7 @@ nav{
 }
 
 nav button {
-    background-color: var(--bg-button-color);
+    background-color: var(--bg-color);
     border: none;
     outline: none;
     color: var(--primary-text-color);
@@ -78,7 +79,7 @@ section{
 }
 
 section .task-column{
-    background-color: var(--bg-button-color);
+    background-color: var(--bg-color);
     flex-grow: 1;
     padding: var(--padding-m);
     display: flex;
@@ -118,4 +119,60 @@ section .task-column .task button{
     outline: none;
     background-color: var(--delete-color);
     color: var(--primary-text-color);
+}
+
+.modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active{
+    display: flex;
+}
+
+.modal .bg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(59, 59, 59, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal .center{
+    background-color: var(--bg-color);
+    padding: var(--padding-xxl);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    z-index: 10;
+}
+
+.modal .center input,
+.modal .center textarea,
+.modal .center .select{
+    background-color: var(--bg-task-color);
+    border: none;
+    outline: none;
+    padding: var(--padding-m);
+    color: var(--primary-text-color);
+    border-radius: var(--border-radius-s);
+}
+
+.modal .center button{
+    background-color: var(--bg-btn-color);
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    cursor: pointer;
+    border-radius: var(--border-radius-m);
+    width: fit-content;
+    align-self: center;
 }
