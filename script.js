@@ -18,8 +18,9 @@ function addTask(title, desc, column) {
         <p>${desc}</p>
         <button>Delete</button>
     `;
-
-    column.appendChild(div);
+    const tasksContainer = column.querySelector('.tasks');
+    tasksContainer.appendChild(div);
+    //  column.appendChild(div);
 
     div.addEventListener('drag', (e) => {
         dragElement = div;
@@ -75,23 +76,25 @@ tasks.forEach(task => {
 })
 
 function addEventOnColumn(column) {
-    column.addEventListener('dragenter', (e) => {
+    const tasksContainer = column.querySelector('.tasks');
+    
+    tasksContainer.addEventListener('dragenter', (e) => {
         e.preventDefault();
         column.classList.add('hover-over');
     })
 
-    column.addEventListener('dragleave', (e) => {
+    tasksContainer.addEventListener('dragleave', (e) => {
         e.preventDefault();
         column.classList.remove('hover-over');
     })
 
-    column.addEventListener('dragover', (e) => {
+    tasksContainer.addEventListener('dragover', (e) => {
         e.preventDefault();
     })
-    column.addEventListener('drop', (e) => {
+    tasksContainer.addEventListener('drop', (e) => {
         e.preventDefault();
 
-        column.appendChild(dragElement);
+        tasksContainer.appendChild(dragElement);
         column.classList.remove('hover-over');
 
         updateTaskCount();
@@ -130,3 +133,4 @@ addTaskButton.addEventListener('click', () => {
     document.querySelector('#task-title-input').value = '';
     document.querySelector('#task-desc-input').value = '';
 });
+console.log(todo.querySelector('.tasks'));
