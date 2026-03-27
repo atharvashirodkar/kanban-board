@@ -65,10 +65,10 @@ nav{
 
 nav button {
     background-color: var(--bg-color);
-    border: none;
+    /* border: none; */
     outline: none;
     color: var(--primary-text-color);
-    padding: var(--padding-m) var(--padding-l);
+    padding: var(--padding-l) var(--padding-xl);
     cursor: pointer;
     border-radius: var(--border-radius-m);
 }
@@ -77,15 +77,15 @@ section{
     padding: var(--section-padding);
     display: flex;
     flex-grow: 1;
+    overflow: hidden;
     justify-content: space-between;
     gap: var(--padding-xxl);
 }
 
 section .task-column{
     background-color: var(--bg-color);
-    flex-grow: 1;
     width: 100%;
-    padding: var(--padding-m);
+    padding: var(--padding-l);
     display: flex;
     flex-direction: column;
     gap: var(--padding-m);
@@ -100,9 +100,25 @@ section .task-column.hover-over{
 
 section .task-column .heading{
     width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    padding-bottom: var(--padding-m);
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+section .task-column .tasks {
+    display: flex;
+    flex-grow: 1;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-text-color) transparent;
+    flex-direction: column;
+    padding-left: var(--padding-m);
+    padding-right: var(--padding-s);
+    gap: var(--padding-l);
 }
 
 section .task-column .task{
